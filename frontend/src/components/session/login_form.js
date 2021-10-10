@@ -10,16 +10,15 @@ class LoginForm extends React.Component {
       password: '',
       errors: {}
     };
-    this.update = this.update.bind(this)
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-        console.log("Hit this?")
-      .then(this.props.history.push('/tweets'));
+    if (this.props.currentUser === true) {
+      this.props.history.push('/tweets/');
     }
 
     // Set or clear errors
@@ -43,7 +42,8 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-    .then(this.props.history.push('/tweets')); 
+    // console.log("hello!")
+    // .then(() => this.props.history.push('/tweets')); 
   }
 
   // Render the session errors if there are any
